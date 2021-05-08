@@ -1,9 +1,12 @@
 import { readUsers } from '../data/DBRepository/database/Users'
-import { getUserListingData, writeUserListing } from '../data/Repository'
+import { getUserListingDataFromCloud, getUserListingDataFromDatabase, writeUserListing } from '../data/Repository'
+import { checkInternetConnectivity } from '../data/CloudRepository/network/Network'
 
 export async function getUserListing(requestData) {
-    let userList = await getUserListingData(requestData)
-    await writeUserListing(userList)
-    await readUsers()
-    return userList
+    let isNetworkPresent = await checkInternetConnectivity()
+    let response = isNetworkPresent ? await getUserListingDataFromCloud(requestData) : await getUserListingDataFromDatabase()
+    if (isNetworkPresent) {
+        await writeUserListing(response)
+    }
+    return response
 }
