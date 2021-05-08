@@ -12,8 +12,6 @@ let size = getDeviceWidth() - getX(38)
 
 const UserDetailComponent = (props) => {
 
-    console.log("LOAD : " + JSON.stringify(props));
-
     return (
         <ScrollView>
             <View style={{

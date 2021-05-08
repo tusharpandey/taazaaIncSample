@@ -15,14 +15,10 @@ class UserDetailContainer extends React.Component {
 
     async componentDidMount() {
         let detail = await readUserDetailFromListing(this.uuid)
-        setTimeout(() => {
-            this.setState({ userObject: detail })
-        }, 2000)
+        this.setState({ userObject: detail })
     }
 
     render() {
-
-        console.log("NEW STATE IS : " + JSON.stringify(this.state.userObject));
 
         return (
             <UserDetailComponent

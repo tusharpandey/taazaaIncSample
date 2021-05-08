@@ -11,7 +11,8 @@ class UserListingContainer extends React.Component {
         super(props)
         this.state = {
             searchText: "",
-            userListing: []
+            userListing: [],
+            isLoading: false,
         }
     }
 
@@ -29,8 +30,9 @@ class UserListingContainer extends React.Component {
     }
 
     async fetchData(count = 10) {
+        this.setState({ isLoading: true })
         let response = await getUserListing(count)
-        this.setState({ userListing: response })
+        this.setState({ userListing: response, isLoading: false })
     }
 
     handleText = (text) => {
@@ -45,6 +47,7 @@ class UserListingContainer extends React.Component {
         return (
             <View style={{ flex: 1 }}>
                 <UserListingComponent
+                    isLoading={this.state.isLoading}
                     onItemPress={this.onItemPress}
                     data={this.state.userListing}
                     handleText={this.handleText}
