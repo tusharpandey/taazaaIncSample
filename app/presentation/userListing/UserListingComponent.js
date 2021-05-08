@@ -38,7 +38,9 @@ const UserListingComponent = (props) => {
             </Pressable>
         </View>
 
-        <GridComponent data={props.data} />
+        <GridComponent
+            onItemPress={props.onItemPress}
+            data={props.data} />
 
     </View>)
 }

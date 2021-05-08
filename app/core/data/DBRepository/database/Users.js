@@ -35,6 +35,22 @@ export function readUsers() {
     })
 }
 
+export function readUserDetail(uuid) {
+    return new Promise((resolve, rejects) => {
+        Realm.open({ schema: Schema })
+            .then(realm => {
+                let user = realm.objects(UserSchema.name)
+                let filteredUser = user.filtered("uuid == $0", uuid)
+                console.log("TO FILTERED : " + JSON.stringify(filteredUser));
+                resolve(filteredUser[0])
+            })
+            .catch(error => {
+                console.log('realm filtering user read error: ' + error)
+                rejects(undefined)
+            })
+    })
+}
+
 export function deleteUser() {
     Realm.open({ schema: Schema })
         .then(realm => realm.write(() => {

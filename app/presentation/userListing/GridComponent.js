@@ -35,7 +35,10 @@ export default Grid = (props) => {
             style={{ ...GlobalStyle.app_margin_vertical }}
             data={props.data}
             renderItem={({ item }) => (
-                <Item name={item.name} picture={item.picture} />
+                <Pressable onPress={() => { props.onItemPress(item.uuid) }}>
+                    <Item name={item.name} 
+                    picture={item.picture} />
+                </Pressable>
             )}
 
             keyExtractor={item => item.uuid}

@@ -2,8 +2,7 @@ import React from 'react';
 import {
     View,
 } from 'react-native';
-import { readUsers } from '../../core/data/DBRepository/database/Users';
-import { getUserListing } from '../../core/useCase/GetUserListingUseCase';
+import { getUserListing } from '../../core/useCase/UserUseCase';
 import UserListingComponent from './UserListingComponent';
 
 class UserListingContainer extends React.Component {
@@ -38,10 +37,15 @@ class UserListingContainer extends React.Component {
         this.setState({ searchText: text })
     }
 
+    onItemPress = (uuid) => {
+        this.props.navigation.navigate('userDetail', { uuid: uuid })
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
                 <UserListingComponent
+                    onItemPress={this.onItemPress}
                     data={this.state.userListing}
                     handleText={this.handleText}
                     onActionSearch={this.onActionSearch}
