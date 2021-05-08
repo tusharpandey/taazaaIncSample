@@ -34,10 +34,10 @@ export const mapUserResponse = (response) => {
         [SCHEMA_KEYS.GENDER]: response[SCHEMA_KEYS.GENDER],
         [SCHEMA_KEYS.NAME]: response[SCHEMA_KEYS.NAME].title + response[SCHEMA_KEYS.NAME].first + response[SCHEMA_KEYS.NAME].last,
         [SCHEMA_KEYS.LOCATION]: response[SCHEMA_KEYS.LOCATION].state,
-        [SCHEMA_KEYS.EMAIL]: response.login[SCHEMA_KEYS.EMAIL],
-        [SCHEMA_KEYS.DOB]: response.dob[SCHEMA_KEYS.DOB],
-        [SCHEMA_KEYS.PHONE]: response.registered[SCHEMA_KEYS.PHONE],
-        [SCHEMA_KEYS.PICTURE]: response.picture[SCHEMA_KEYS.PICTURE],
+        [SCHEMA_KEYS.EMAIL]: response.email,
+        [SCHEMA_KEYS.DOB]: response.dob.date,
+        [SCHEMA_KEYS.PHONE]: response[SCHEMA_KEYS.PHONE],
+        [SCHEMA_KEYS.PICTURE]: response.picture.large,
     }
 }
 

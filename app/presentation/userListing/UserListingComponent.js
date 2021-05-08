@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import GlobalStyle from '../util/GlobalStyle'
 import { HorizontalSpacing_10 } from '../util/Spacing';
+import GridComponent from './GridComponent';
 
 const UserListingComponent = (props) => {
     return (<View style={{
@@ -36,6 +37,9 @@ const UserListingComponent = (props) => {
                 <Text style={{ ...GlobalStyle.app_input_action_padding }}>{"Search"}</Text>
             </Pressable>
         </View>
+
+        <GridComponent data={props.data} />
+
     </View>)
 }
 

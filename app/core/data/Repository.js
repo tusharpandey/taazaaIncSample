@@ -1,4 +1,4 @@
-import { getDataFromDB, writeDataInDB } from './DBRepository/module/GetDataFromDBResouce'
+import { getDataFromDB, writeDataInDB, deleteDataInDB } from './DBRepository/module/GetDataFromDBResouce'
 import { getDataFromApi } from './CloudRepository/module/GetDataFromNetwork'
 
 export async function getUserListingDataFromCloud(requestData) {
@@ -13,4 +13,8 @@ export async function getUserListingDataFromDatabase() {
 
 export async function writeUserListing(requestData) {
     await writeDataInDB(requestData)
+}
+
+export async function deleteUserListing() {
+    await deleteDataInDB()
 }

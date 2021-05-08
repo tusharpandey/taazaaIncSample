@@ -7,7 +7,7 @@ export function writeUsers(data) {
     Realm.open({ schema: Schema })
         .then(realm => {
             console.log("TO WRITE : " + JSON.stringify(data));
-            let results = data.results
+            let results = data
             for (let i = 0; i < results.length; i++) {
                 realm.write(() => {
                     realm.create(UserSchema.name, mapUserResponse(results[i]));
@@ -33,4 +33,15 @@ export function readUsers() {
                 rejects(undefined)
             })
     })
+}
+
+export function deleteUser() {
+    Realm.open({ schema: Schema })
+        .then(realm => realm.write(() => {
+            let user = realm.objects(UserSchema.name);
+            realm.delete(user);
+        }))
+        .catch(error => {
+            console.log('realm delete error: ' + error)
+        })
 }

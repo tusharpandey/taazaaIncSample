@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderColor: 'grey',
     },
+    app_margin_vertical: {
+        marginBottom: getY(10),
+        marginTop: getY(10),
+    }
 });
 
 export default styles;
